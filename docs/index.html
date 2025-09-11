@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Despensa — Día 3</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Despensa</h1>
+      <div class="settings">
+        <label>Base URL
+          <input id="baseUrl" type="text" value="http://127.0.0.1:8000" />
+        </label>
+        <label>X-API-KEY
+          <input id="apiKey" type="password" placeholder="Tu clave" />
+        </label>
+        <button id="saveSettings">Guardar</button>
+      </div>
+    </header>
+
+    <section class="filters">
+      <input id="q" type="search" placeholder="Buscar por nombre…" />
+      <select id="categoria">
+        <option value="">Todas las categorías</option>
+      </select>
+      <label class="checkbox">
+        <input id="belowMin" type="checkbox" />
+        Bajo mínimo
+      </label>
+      <button id="btnBuscar">Buscar</button>
+      <button id="btnLimpiar">Limpiar</button>
+    </section>
+
+    <section class="table-wrap">
+      <table id="tabla">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Cant.</th>
+            <th>Unidad</th>
+            <th>Caducidad</th>
+            <th>Mínimo</th>
+            <th>Notas</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div id="empty" class="empty">No hay productos.</div>
+    </section>
+
+    <section class="form-wrap">
+      <h2 id="formTitle">Añadir / Editar</h2>
+      <form id="form">
+        <input type="hidden" id="id" />
+        <div class="grid">
+          <label>Nombre*
+            <input id="name" required maxlength="200" />
+          </label>
+          <label>Categoría
+            <input id="category" maxlength="100" list="categoryList" />
+            <datalist id="categoryList"></datalist>
+          </label>
+          <label>Cantidad
+            <input id="quantity" type="number" step="0.01" min="0" value="0" />
+          </label>
+          <label>Unidad
+            <input id="unit" maxlength="20" value="ud" />
+          </label>
+          <label>Caducidad
+            <input id="expiry_date" type="date" />
+          </label>
+          <label>Mínimo
+            <input id="min_quantity" type="number" step="0.01" min="0" value="0" />
+          </label>
+          <label class="full">Notas
+            <input id="notes" maxlength="500" />
+          </label>
+        </div>
+        <div class="actions">
+          <button type="submit" id="btnGuardar">Guardar</button>
+          <button type="button" id="btnCancelar">Cancelar</button>
+          <button type="button" id="btnBorrar" class="danger">Borrar</button>
+        </div>
+      </form>
+    </section>
+
+    <div id="toast" class="toast" hidden></div>
+    <script src="app.js"></script>
+  </body>
+</html>
